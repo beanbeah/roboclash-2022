@@ -114,11 +114,12 @@ void setup() {
 void loop() {
   //note Ibus Lib reads switches from 0 - 9. Thus offset.
   int y = controllerMap(readChannel(1),250);
-  int x = controllerMap(readChannel(3),200);
+  int x = controllerMap(readChannel(3),250);
   int servo = readSwitch(4);
   int auton = readSwitch(6);
   int intake_dir = readSwitch(7);
   int intake = readSwitch(5);
+  bool rollerSwitch = readChannel(8) == 2000 ? true : false;
 
   if (auton == 0) { 
     
