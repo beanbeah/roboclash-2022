@@ -122,6 +122,11 @@ void loop() {
   bool rollerSwitch = readChannel(8) == 2000 ? true : false;
 
   if (auton == 0) { 
+    FL.move(0);
+    FR.move(0);
+    BL.move(0);
+    BR.move(0);
+    roller(0);
     
   } else if (auton == 1) {
    //driver control  
@@ -132,7 +137,7 @@ void loop() {
 
    if (intake == 1){
     if (intake_dir == 1) roller(250);
-    else if (intake_dir == 0) roller(-250);
+    else if (intake_dir == 0) roller(-180);
     else if (intake_dir == -1) roller(0);
    } else {
     roller(0);
