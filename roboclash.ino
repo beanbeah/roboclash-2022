@@ -102,6 +102,7 @@ void roller(double power) {
 
 ////////////////////////////////////////////MAIN/////////////////////////////////////
 Servo indexer;
+bool state = false;
 
 void setup() {
   Serial.begin(115200);
@@ -122,6 +123,15 @@ void loop() {
   bool rollerSwitch = readChannel(8) == 2000 ? true : false;
 
   if (auton == 0) { 
+    if (!state) {
+      roller(-250);
+      delay(1000);
+      roller(0);
+      powerBase(0,0);
+      state = true;
+    }
+    
+    //end auton
     FL.move(0);
     FR.move(0);
     BL.move(0);
